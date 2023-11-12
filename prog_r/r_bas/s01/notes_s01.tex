@@ -1,0 +1,129 @@
+% Preámbulo
+\documentclass{article}
+    % UTF-8 encoding
+    \usepackage[utf8]{inputenc}
+    % Idioma
+    \usepackage[spanish]{babel}
+    % Geometría
+    \usepackage[a4paper]{geometry}
+    % Título | autor | fecha | cambios
+    \title{Notas de clase de la sesión 1}
+    \author{
+        Jhon R. Ordoñez \\
+        \textcolor{blue}{rolyordonezleon@gmail.com}
+    }
+    \date{\today}
+    \usepackage{titling}
+        \setlength{\droptitle}{-1.5cm}
+        \setlength{\parindent}{0cm} % 1.27cm APA7
+    % Encabezado | pie de página
+    \usepackage{fancyhdr}
+        \pagestyle{fancy}
+        \fancyhf{} % Limpiar encabezado y pie de página predefinido
+        \lhead{2023}
+        \chead{Programación en R} 
+        \rhead{Jhon R. Ordoñez}
+        \cfoot{\thepage} 
+    % Textos automático
+    \usepackage{lipsum}
+    % Colores
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    % Personalización para ingresar el código de R
+    \usepackage{listings}
+    \lstset{
+    	language=R,
+    	basicstyle=\ttfamily,
+    	numbers=left,
+    	numberstyle=\tiny,
+    	stepnumber=1,
+    	numbersep=5pt,
+    	backgroundcolor=\color{white},
+    	showspaces=false,
+    	showstringspaces=false,
+    	showtabs=false,
+    	tabsize=2,
+    	captionpos=b,
+    	breaklines=true,
+    	breakatwhitespace=false,
+    	title=\lstname,
+    	keywordstyle=\color{blue},
+    	commentstyle=\color{green},
+    	stringstyle=\color{red},
+    	morekeywords={install.packages, library, data.frame, plot},
+    }
+	% Ingresar código sin generar un error
+	\usepackage{verbatim}
+	
+% Cuerpo
+\begin{document}
+    % Hacer el título
+        \maketitle
+    % Estilo de la página
+        \thispagestyle{fancy}
+    % Sección 1
+    \section{Vectores y matrices}
+       % Subsección 1.1
+       \subsection{Vectores}
+       Creamos los vectores \textbf{peso} y \textbf{edad} en la misma dimensión.
+\begin{lstlisting}
+# Creamos los vectores peso y edad
+peso <- c(4.4, 5.4, 6.4, 3.2, 7.5, 3, 6.1, 3.1, 6.1, 7, 3.4)
+edad <- c(1, 2, 3, 4, 5, 6, 7,8, 9, 1)
+\end{lstlisting}
+    {\bf \it Nota.- } En $R$ los índices (numeraciones) comienzan en el $1$, no en el $0$ como ocurre en muchos lenguajes de programación. \\
+    
+    {\bf \it Extra:} El operador “:” genera secuencias.
+\begin{lstlisting}
+# Ejemplo
+c(2:6)
+\end{lstlisting}    
+    	Creamos los vectores $x$, $y$  y $z$.
+\begin{lstlisting}
+# Vectores
+x <- c(1, 2, 3, 4, 5, 6, 7, 8)
+y <- c("juan", "pepe", "inaky", "amparito", "mariano",
+	   "juancar", "fulano", "elefante")
+z <- c(TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, 
+       TRUE, TRUE)
+\end{lstlisting}    	
+   
+	% Subsección 1.2
+	\subsection{Matrices}     
+		Una matriz es un vector con un atributo adicional (\verb|dim|), que a su vez es un vector numérico
+		de longitud 2 que define el número de filas y columnas. Se crean con la función \verb|matrix()|.
+
+\begin{lstlisting}
+matrix(data = NA, nrow = 2, ncol = 2,
+       byrow = F, dimnames = NULL) 
+matrix(data = 1:4, nrow = 2, ncol = 2,
+       byrow = F, dimnames = NULL)
+matrix(data = 5, nrow = 2, ncol = 2, 
+       byrow = F, dimnames = NULL)
+\end{lstlisting}
+
+	% Subsección 1.3
+	\subsection{Data frames} 	
+		Un dataframe (a veces se traduce como ‘marco de datos’) es una generalización
+		de las matrices donde cada columna puede contener tipos de datos distintos al
+		resto de columnas, manteniendo la misma longitud. Es lo que más se parece a una
+		tabla de datos de $SPSS$ o $SAS$, o de cualquier paquete estadístico estándar.
+		Se crean con la función \verb|data.frame()|.
+		
+\begin{lstlisting}
+# Ejemplo. data.frame() 
+	diabetes <- c("Tipo1", "Tipo1", "Tipo2", "Tipo2",
+	              "Tipo1", "Tipo1", "Tipo2", "Tipo1")
+	estado <- c("bueno", "malo", "bueno", "bueno",
+	            "bueno", "malo", "bueno", "malo")
+\end{lstlisting}
+
+		{\bf \it Extra:} Crear un tabla cruzada.
+		
+\begin{lstlisting}
+# Creamos un tabla cruzada.
+	table(df$diabetes, df$estado)
+\end{lstlisting}		
+		
+\end{document}
+
