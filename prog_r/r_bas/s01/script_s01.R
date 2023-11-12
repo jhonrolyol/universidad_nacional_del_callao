@@ -28,7 +28,3 @@
   df <- data.frame(peso, edad, mes)
   df
   
-  
-  
-  
-  
